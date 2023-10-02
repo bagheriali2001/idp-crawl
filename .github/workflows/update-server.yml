@@ -11,4 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: echo "${{ vars.BACKEND_ENV_FILE }}" > ./backend/.env
       - run: echo "${{ vars.FRONTEND_ENV_FILE }}" > ./frontend/.env
+      - run: cd backend
+      - run: docker compose up -d --build
+      - run: cd ../frontend
       - run: docker compose up -d --build

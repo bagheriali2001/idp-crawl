@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  idp-crawl-frontend-api:
+    image: idp-crawl-frontend-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: idp-crawl-frontend-api
+    restart: always
+    networks:
+      - main_network
+    ports:
+      - 127.0.0.1:3000:3000
+    env_file:
+      - ./.env
+
+networks:
+  main_network:
+    name: main_network
