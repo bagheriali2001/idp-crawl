@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-  idp-crawl-frontend-api:
-    image: idp-crawl-frontend-api:latest
+  idp-crawl-frontend-app:
+    image: idp-crawl-frontend-app:latest
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: idp-crawl-frontend-api
+    container_name: idp-crawl-frontend-app
     restart: always
     networks:
       - main_network
