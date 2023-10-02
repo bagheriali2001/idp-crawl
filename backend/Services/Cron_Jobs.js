@@ -11,7 +11,7 @@ const db = require("../Models");
 const { sendEmail } = require("./Email_Service");
 
 class Cron_Jobs {
-    countries = [95, 220, 108];
+    countries = [95, 212, 220, 96, 13, 9];
     months_advance_steps_count = 2;
     months_to_advance_each_step = 2;
 
@@ -19,7 +19,8 @@ class Cron_Jobs {
         this.dataFetcher = new DataFetcher();
 
         // cron every day at 23:55 PM
-        cron.schedule("55 23 * * *", () => {
+        // cron.schedule("55 23 * * *", () => {
+        cron.schedule("*/10 * * * *", () => {
             // cron.schedule("30 * * * * *", () => {
             this.fetchVenues();
         });
