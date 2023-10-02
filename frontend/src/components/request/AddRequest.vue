@@ -85,7 +85,7 @@ export default {
     },
     data() {
         return {
-            country_code: country_code.values,
+            country_code: country_code.values.filter(country => [95, 212, 220, 96, 13, 9].includes(country.code)),
             testCentreLocations: testCentreLocations.values,
             testFormatIds: testFormatId.values,
             current_country: '',

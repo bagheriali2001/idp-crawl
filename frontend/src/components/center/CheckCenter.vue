@@ -132,7 +132,7 @@ export default {
     data() {
         return {
             googleMapBaseURL: "https://www.google.com/maps/dir/?api=1&destination=",
-            country_code: country_code.values,
+            country_code: country_code.values.filter(country => [95, 212, 220, 96, 13, 9].includes(country.code)),
             testCentreLocations: testCentreLocations.values,
             testFormatIds: testFormatId.values,
             // current_country: 0,
