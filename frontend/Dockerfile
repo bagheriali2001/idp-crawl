@@ -8,4 +8,4 @@ COPY . .
 EXPOSE 3000
 ENV TZ=Asia/Tehran
 RUN yarn run build
-CMD [ "yarn", "run", "serve" , "--port", "3000", "--host"]
+CMD [ "yarn", "run", "serve" , "--port", "3003", "--host"]
