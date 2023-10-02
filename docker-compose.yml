@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+
+  idp-crawl-backend-mongo-db:
+    image: mongo:6.0.7
+    container_name: idp-crawl-backend-mongo-db
+    restart: always
+    networks:
+      - idp-crawl-backend-net
+    env_file:
+      - ./backend/.env
+    volumes:
+      - /idp-crawl/db_data:/data/db
+
+  idp-crawl-backend-api:
+    image: idp-crawl-backend-api:latest
+    build:
+      context: ./backend
+      dockerfile: ./backend/Dockerfile
+    container_name: idp-crawl-backend-api
+    restart: always
+    networks:
+      - idp-crawl-backend-net
+      - main_network
+    depends_on:
+      - idp-crawl-backend-mongo-db
+    env_file:
+      - ./backend/.env
+    volumes:
+      - /cryp_bot/logs:/home/node/app/logs
+
+  idp-crawl-frontend-api:
+    image: idp-crawl-frontend-api:latest
+    build:
+      context: ./frontend
+      dockerfile: ./frontend/Dockerfile
+    container_name: idp-crawl-frontend-api
+    restart: always
+    networks:
+      - main_network
+    ports:
+      - 127.0.0.1:3000:3000
+    env_file:
+      - ./frontend/.env
+
+networks:
+  idp-crawl-backend-net:
+    name: idp-crawl-backend-net
+    driver: bridge
+  main_network:
+    name: main_network

@@ -1,0 +1,6 @@
+.eslint*
+.gitignore
+.prettierrc
+.dockerigonre
+Dockerfile
+docker-compose*.yml
