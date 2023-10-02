@@ -5,7 +5,7 @@ COPY ./package.json ./
 COPY ./yarn.lock ./
 RUN yarn install
 COPY . .
-EXPOSE 3000
+EXPOSE 3003
 ENV TZ=Asia/Tehran
 RUN yarn run build
 CMD [ "yarn", "run", "serve" , "--port", "3003", "--host"]
