@@ -19,9 +19,7 @@ class Cron_Jobs {
         this.dataFetcher = new DataFetcher();
 
         // cron every day at 23:55 PM
-        // cron.schedule("55 23 * * *", () => {
-        cron.schedule("*/10 * * * *", () => {
-            // cron.schedule("30 * * * * *", () => {
+        cron.schedule("55 23 * * *", () => {
             this.fetchVenues();
         });
 
@@ -31,8 +29,7 @@ class Cron_Jobs {
         });
 
         // cron every hour 15 and 45 minutes
-        // cron.schedule("15,45 * * * *", () => {
-        cron.schedule("35 * * * * *", () => {
+        cron.schedule("15,45 * * * *", () => {
             this.fetchCheckRequest();
         });
     }
