@@ -46,7 +46,7 @@
                         <td>{{ request.end_date }}</td>
                         <td>{{ request.isFound }}</td>
                         <td>
-                        <button type="button" @click="deleteRequest(request._id)" class="btn btn-sm btn-outline btn-success">Delete</button>
+                        <button type="button" @click="deleteRequest(request._id)" class="btn btn-sm btn-outline btn-success" id="my-request-delete-request" data-umami-event="My Request Delete Request">Delete</button>
                         </td>
                     </tr>
                     </tbody>

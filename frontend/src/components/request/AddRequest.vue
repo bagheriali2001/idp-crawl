@@ -28,7 +28,7 @@
             <div class="divider lg:divider-horizontal"></div> 
 
             <div class="flex flex-row items-center justify-center">
-                <button type="button" @click="getCenters" class="btn btn-outline btn-success">Get Centers</button>
+                <button type="button" @click="getCenters" class="btn btn-outline btn-success" id="add-request-get-center" data-umami-event="Add Request Get Center">Get Centers</button>
             </div>
         </div>
         <div class="flex flex-row items-center justify-center gap-2" v-if="show_step_two">
@@ -64,7 +64,7 @@
             <div class="divider lg:divider-horizontal"></div> 
 
             <div class="flex flex-row items-center justify-center">
-                <button type="button" @click="setAlarm" class="btn btn-outline btn-success">Set An Alarm</button>
+                <button type="button" @click="setAlarm" class="btn btn-outline btn-success" id="add-request-set-alarm" data-umami-event="Add Request Set Alarm">Set An Alarm</button>
             </div>
         </div>
         <Teleport to="body">

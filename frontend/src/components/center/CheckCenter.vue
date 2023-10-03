@@ -28,7 +28,7 @@
             <div class="divider lg:divider-horizontal"></div> 
 
             <div class="flex flex-row items-center justify-center">
-                <button type="button" @click="getCenters" class="btn btn-outline btn-success">Get Centers</button>
+                <button type="button" @click="getCenters" class="btn btn-outline btn-success" id="centers-get-center" data-umami-event="Centers Get Center">Get Centers</button>
             </div>
         </div>
         <div class="flex flex-row items-center justify-center gap-2" v-if="show_step_two">
@@ -52,7 +52,7 @@
                         </a>
                     </td>
                     <td>
-                        <button type="button" @click="getTests(center.testVenueId)" class="btn btn-sm btn-outline btn-success">Get Tests</button>
+                        <button type="button" @click="getTests(center.testVenueId)" class="btn btn-sm btn-outline btn-success" :id="`centers-get-test-${center.testVenueId}`" :data-umami-event="`Centers Get Tests of ${center.testVenueId}`">Get Tests</button>
                     </td>
                 </tr>
                 </tbody>
@@ -262,7 +262,7 @@ export default {
                 });
                 this.tests = response.body.tests;
 
-                if( this.tests.length == 0) {
+                if(this.tests.length == 0) {
                     this.$emit('update-error-modal',{
                         show: true,
                         title: "Error",
@@ -272,6 +272,7 @@ export default {
                     });
                     return;
                 }
+                this.show_step_three = true;
             } catch (error) {
                 console.log(error);
                 this.$emit('update-error-modal',{
