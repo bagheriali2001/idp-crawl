@@ -2,11 +2,13 @@
 	<div class="container mx-auto">
 		<div class="hidden sm:block">
 			<div class="tabs w-full">
-				<a
+				<button
 					v-for="tab in tabs"
 					:key="tab.id"
 					:class="['tab', 'tab-lifted', {'tab-active': currentTab === tab.id}]"
 					@click="updateCurrentTab(tab.id)"
+					:id="`change-tab-${tab.slug}`"
+					:data-umami-event="`Change Tab ${tab.slug}`"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5 mr-1"
@@ -18,7 +20,7 @@
 					stroke-linejoin="round"
 					stroke-width="2"
 					:d="tab.svgPath"
-				/></svg>{{ tab.name }}</a>
+				/></svg>{{ tab.name }}</button>
 			</div>
 
 			<div class="divider"></div>
@@ -74,16 +76,19 @@ export default {
 				{
 					id: 1,
 					name: 'Check Center Availability',
+					slug: 'check-center',
 					svgPath: 'M4 6h16M4 12h16M4 18h16',
 				},
 				{
 					id: 2,
 					name: 'My Requests',
+					slug: 'my-requests',
 					svgPath: 'M4 6h16M4 12h16M4 18h16',
 				},
 				{
 					id: 3,
 					name: 'Add Request',
+					slug: 'add-request',
 					svgPath: 'M4 6h16M4 12h16M4 18h16',
 				},
 			],
