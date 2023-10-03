@@ -235,8 +235,8 @@ export default {
                 this.$emit('update-error-modal',{
                     show: true,
                     title: "Error",
-                    message: "Something went wrong while fetching centers",
-				    close_time_limit: 5000,
+                    message: error?.response?.data?.body?.errors[0].message || "Something went wrong while fetching centers",
+				    close_time_limit: 7000,
                     warn: true,
                 });
             }
@@ -277,8 +277,8 @@ export default {
                 this.$emit('update-error-modal',{
                     show: true,
                     title: "Error",
-                    message: "Something went wrong while fetching tests",
-                    close_time_limit: 5000,
+                    message: error?.response?.data?.body?.errors[0].message || "Something went wrong while fetching tests",
+                    close_time_limit: 7000,
                     warn: true,
                 });
             }

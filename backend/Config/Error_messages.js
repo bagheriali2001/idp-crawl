@@ -104,4 +104,14 @@ module.exports = {
         message: "End date is invalid.",
         code: { http: 400, spec: 24 },
     },
+    active_check_requests_limit_reached: {
+        message:
+            "Active check requests limit reached. Please Check help to see number of active check requests allowed.",
+        code: { http: 400, spec: 25 },
+    },
+    monthly_check_requests_limit_reached: {
+        message:
+            "Monthly check requests limit reached. Please Check help to see number of check requests allowed per month.",
+        code: { http: 400, spec: 26 },
+    },
 };

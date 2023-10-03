@@ -2,6 +2,7 @@ const Express_router = require("express").Router();
 const { validate } = require("../Utils/Validator");
 const validators = require("../Validators/User_Validators");
 const controller = require("../Controllers/User_Controller");
+const { checkLimit } = require("../Middlewares/LimitChecker");
 
 // User ID - > Get
 Express_router.get("/", controller.getNewUserID);
@@ -16,6 +17,7 @@ Express_router.post(
         validators.start_date("body"),
         validators.end_date("body"),
     ]),
+    checkLimit,
     controller.addRequest
 );
 

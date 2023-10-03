@@ -7,7 +7,9 @@ export default {
 		},
 		text: {
 			type: String,
-			default: 'Hello World',
+		},
+		textArray: {
+			type: Array,
 		},
 	}
 }
@@ -43,7 +45,13 @@ export default {
 					Help
 				</div>
 
-				<div class="m-4">
+				<div class="m-4" v-if="textArray && textArray.length > 0">
+					<span v-for="text in textArray" :key="text">
+						{{ text }}<br>
+					</span>
+				</div>
+
+				<div class="m-4" v-else>
 					{{ text }}
 				</div>
 

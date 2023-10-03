@@ -68,7 +68,7 @@
             </div>
         </div>
         <Teleport to="body">
-            <HelpModalComponent :show="showHelpModal" :text="helpModelText" @close="showHelpModal = false"/>
+            <HelpModalComponent :show="showHelpModal" :textArray="helpModelText" @close="showHelpModal = false"/>
         </Teleport>
     </div>
 </template>
@@ -98,14 +98,13 @@ export default {
             end_date: '',
             show_step_two: false,
             showHelpModal: false,
-            helpModelText: "You can add a request to get notified when a test time was found, please first choose the country, city, and format of the test, then click on the 'Get Centers' button, then choose the centers you want to be notified about, then enter your email, start date, and end date, and click on the 'Set An Alarm' button. The start date and end date are the dates you want us to check for test times between them.",
+            helpModelText: [`You can add a request to get notified when a test time was found, please first choose the country, city, and format of the test, then click on the 'Get Centers' button, then choose the centers you want to be notified about, then enter your email, start date, and end date, and click on the 'Set An Alarm' button. The start date and end date are the dates you want us to check for test times between them.`,
+            `Please Note that in each month you can have up to 5 total requests, and you can't have more than 3 active requests at each time. You can always delete a request and add a new one.`],
         }
     },
     created() {
         this.start_date = moment().format('YYYY-MM-DD');
         this.end_date = moment().add(1, 'months').format('YYYY-MM-DD');
-
-        console.log(this.$store.getters.getUserId);
     },
     watch: {
         current_country: function (val) {
@@ -156,8 +155,8 @@ export default {
                 this.$emit('update-error-modal',{
                     show: true,
                     title: "Error",
-                    message: "Something went wrong while fetching centers",
-				    close_time_limit: 5000,
+                    message: error?.response?.data?.body?.errors[0].message || "Something went wrong while fetching centers",
+				    close_time_limit: 7000,
                     warn: true,
                 });
             }
@@ -208,8 +207,8 @@ export default {
                 this.$emit('update-error-modal',{
                     show: true,
                     title: "Error",
-                    message: "Something went wrong while setting alarm",
-				    close_time_limit: 5000,
+                    message: error?.response?.data?.body?.errors[0].message || "Something went wrong while setting alarm",
+				    close_time_limit: 7000,
                     warn: true,
                 });
             }
