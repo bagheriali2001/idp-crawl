@@ -23,15 +23,23 @@ class Cron_Jobs {
             this.fetchVenues();
         });
 
-        // cron every 30 minutes
-        cron.schedule("*/30 * * * *", () => {
+        // cron every 30 minutes -> 15
+        cron.schedule("*/15 * * * *", () => {
             this.fetchTests();
         });
 
         // cron every hour 15 and 45 minutes
-        cron.schedule("15,45 * * * *", () => {
+        cron.schedule("10,25,40,55 * * * *", () => {
             this.fetchCheckRequest();
         });
+
+        this.onStart();
+    }
+
+    async onStart() {
+        await this.fetchVenues();
+        await this.fetchTests();
+        await this.fetchCheckRequest();
     }
 
     convertDateMonthToCode(date) {
